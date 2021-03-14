@@ -1,23 +1,27 @@
 import React from 'react';
-import './App.css';
+import Home from './Home'
+import Taxulator from './taxulator'
 
 class App extends React.Component {
 
   constructor() {
     super();
     this.state = {
+      route: 'app',
       searchField: 0
     }
 
   }
 
-  onSearchChange = (event) => {
-    this.setState({searchField: event.target.value})
+  onRouteChange = (route) => {
+    this.setState({route: route});
   }
 
-  onButtonClicked = () => {
-    
-  }
+  onSearchChange = (event) => {
+		this.setState({searchField: event});
+	}
+
+  
 
 
 
@@ -25,45 +29,22 @@ class App extends React.Component {
     
 
     return (
+        <div>
+            {this.state.route === 'app'
+            ?<Home onRouteChange = {this.onRouteChange} onSearchChange = {this.onSearchChange} />
+            :<Taxulator i = {this.state.searchField} j = {9875} k = {518401} />
+            
+            }
+
+
+        </div>
       
 
 
-      <div>
-        <form className="measure center">
-
-
-          <div className="mt3">
-            <label className="db fw6 lh-copy f6 tc f4 fw6 ph0 mh0" htmlFor="user-name">Yearly Income</label>
-              <input 
-              type = "number"
-              onChange = {this.onSearchChange}
-              className="pa2 input-reset ba bg-transparent w-100" 
-              name="income"  
-              id="income"/>
-          </div>
-          <br></br>
-
-
-
-
-          <div className = "center">
-            <input 
-              className="center b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
-              type="submit" 
-              value="submit"
-              onClick = {() => this.onButtonClicked()}/>
-          </div>
-
-      
-        
-        </form>
-      </div>
     )
   }
 
 
 }
-
-
 
 export default App;
