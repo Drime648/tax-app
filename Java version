@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+public class taxes {
+	public static void main(String[] args) {
+
+		double tax = 1;
+		final double min = 9875;
+		final double max = 518401;
+		boolean greeting = true;
+				while (tax != 0) {
+			System.out.println("Well hello their!");
+			Scanner s = new Scanner(System.in);
+			String answer = s.next();
+			if(tax == 0) {
+				System.out.println("Bai Bai see you soon ");
+				break;
+			}
+			System.out.println("Welcome to the Taxulator!\n enter you yearly salarey.");
+			Scanner scan = new Scanner(System.in);
+			tax = scan.nextDouble();
+			System.out.println("the tax that you pay is: " + calculateTaxPercent(tax, min, max));
+			System.out.println("Enjoy your life! NEXT");
+			
+		}
+	}
+
+	private static double calculateTaxPercent(double i, double j, double k) {
+		double percent = 0.0;
+		if (i >= 0 && i <= j) {
+			percent = i - (i * 0.10);
+			return percent;
+
+		} else if (i >= (j + 1) && i <= 40125) {
+			percent = i - (i * 0.12);
+			return percent;
+
+		} else if (i >= 40125 && i <= 85525) {
+			percent = i - (i * 0.22);
+			return percent;
+
+		} else if (i >= 85526 && i <= 16300) {
+			percent = i - (i * 0.24);
+			return percent;
+
+		} else if (i >= 16301 && i <= 207350) {
+			percent = i - (i * 0.32);
+			return percent;
+
+		} else if (i >= 207351 && i <= 518400) {
+			percent = i - (i * 0.35);
+			return percent;
+		} else if (i >= 518401) {
+			percent = i - (i * 0.37);
+			return percent;
+		}
+		return percent;
+	}
+}
